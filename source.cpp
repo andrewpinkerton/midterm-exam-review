@@ -20,7 +20,7 @@ void fileCheck(ifstream& iFile)
 {
 	if (!iFile.is_open())
 	{
-		cout << "File not found" << endl;
+		cout << "File not found! Exiting." << endl;
 		exit(1);
 	}
 
@@ -53,11 +53,11 @@ void sort(vector<person>& workplace, int counter, int choice, ofstream& oFile)
 	double dTemp;
 
 
-	if (choice == 1)
+	for (int a = 0; a < counter; a++)
 	{
-		for (int a = 0; a < counter; a++)
+		for (int b = 0; b < counter - 1; b++)
 		{
-			for (int b = 0; b < counter - 1; b++)
+			if (choice == 1)
 			{
 				if (workplace[b].jobTitle > workplace[b + 1].jobTitle)
 				{
@@ -74,13 +74,7 @@ void sort(vector<person>& workplace, int counter, int choice, ofstream& oFile)
 					workplace[b + 1].wage = dTemp;
 				}
 			}
-		}
-	}
-	else if (choice == 2)
-	{
-		for (int a = 0; a < counter; a++)
-		{
-			for (int b = 0; b < counter - 1; b++)
+			else if (choice == 2)
 			{
 				if (workplace[b].mWorked > workplace[b + 1].mWorked)
 				{
@@ -97,13 +91,7 @@ void sort(vector<person>& workplace, int counter, int choice, ofstream& oFile)
 					workplace[b + 1].wage = dTemp;
 				}
 			}
-		}
-	}
-	else if (choice == 3)
-	{
-		for (int a = 0; a < counter; a++)
-		{
-			for (int b = 0; b < counter - 1; b++)
+			else if (choice == 3)
 			{
 				if (workplace[b].wage > workplace[b + 1].wage)
 				{
@@ -122,6 +110,7 @@ void sort(vector<person>& workplace, int counter, int choice, ofstream& oFile)
 			}
 		}
 	}
+
 	for (int a = 0; a < counter; a++)
 	{
 		cout << left << showpoint << setprecision(4);
